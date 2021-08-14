@@ -5,10 +5,10 @@ from tensorflow.keras.models import load_model
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
-# import keras.engine
+
 
 # Get model
-model = load_model('complex_model.h5')
+model = load_model('prediction_model.h5')
 
 
 # Prompt user to select a file
@@ -28,15 +28,12 @@ img_array = np_img.reshape(48, 48, 1)
 
 # Use model to predict
 
-# angry: 0, happy: 1, sad
+# angry: 0, happy: 1, sad: 2
 hold_pred = np.argmax(model.predict(img_array[None,:,:]))
 
 def prompt(message, img):
     messagebox.showinfo('Predictions', message)
-    # root = Tk()
-    # panel = Label(root, image = img)
-    # panel.pack(side = "bottom", fill = "both", expand = "yes")
-    # root.mainloop()
+    
 
 if hold_pred == 0:
     prompt('Angry', ITK)
