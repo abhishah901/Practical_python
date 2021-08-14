@@ -10,7 +10,11 @@ from tkinter import messagebox
 # Get model
 model = load_model('prediction_model.h5')
 
-
+# Display predictions in a prompt message
+def prompt(message, img):
+    messagebox.showinfo('Predictions', message)
+    
+    
 # Prompt user to select a file
 root = tk.Tk()
 root.withdraw()
@@ -30,9 +34,6 @@ img_array = np_img.reshape(48, 48, 1)
 
 # angry: 0, happy: 1, sad: 2
 hold_pred = np.argmax(model.predict(img_array[None,:,:]))
-
-def prompt(message, img):
-    messagebox.showinfo('Predictions', message)
     
 
 if hold_pred == 0:
